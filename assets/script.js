@@ -4,12 +4,12 @@
 
 $(document).ready(function () {
   // code to display the current date in the header of the page.
-  var now = dayjs().format("MMMM D YYYY, hh:mm;ss a");
+  var now = dayjs().format("MMMM D, YYYY");
   var currentDate = document.getElementById("currentDay");
   currentDate.innerHTML = now;
   var currentHour = dayjs().format("HH");
 
-  // Added a listener for click events on the save button.
+  // added a listener for click events on the save button.
   // use the id in the containing time-block as a key to save the user input in
   // local storage. used `this` to reference content under the svaeBtn id in the click listener
   // used DOM traversal to get the sibling class and parent id.
@@ -35,11 +35,11 @@ $(document).ready(function () {
     } else if (currentHour > timeBlock) {
       $(this).removeClass("future");
       $(this).addClass("past");
+      $(this).children(".hour").addClass("time-display");
     }
   });
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
+  // added code to get user input saved in localStorage and set
+  // the values of the corresponding textarea elements.
 
   $("#hour-09 .description").val(localStorage.getItem("09"));
   $("#hour-10 .description").val(localStorage.getItem("10"));
